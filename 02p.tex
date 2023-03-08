@@ -1,0 +1,63 @@
+\documentclass[12pt,a4paper,notitlepage,leqno]{article}
+
+\input{./einstellungen}
+
+\begin{document}
+
+\vspace{0.2cm}
+\pheader{2}
+
+Wir arbeiten nun mit der Geo-Datenbank Terra. Dafür fügst du den \textsf{Datensatz Terra} in \url{http://dbis-uibk.github.io/relax/calc/local/uibk/local/0} ein.
+
+\begin{paufgabe}{Einfache Relationenalgebra}
+    Mach dich mit der Datenbank vertraut, indem du Ausdrücke in Relationenalgebra entwirfst, um die folgenden Informationen auszulesen.
+    \begin{enumerate}
+            \item Liste alle eindeutigen Länderkürzel auf
+            \item Nenne alle Berge, die größer als 3000 Meter sind!
+            \item Nenne alle Städte in Deutschland, die über eine Million Einwohner haben!
+            \item Nenne alle Wüsten, die vom Typ Sandwüste sind!
+            \item Nenne alle Felswüsten mit einer Größe von mehr als $190000000$!
+        \end{enumerate}
+        
+\end{paufgabe}
+
+\begin{paufgabe}{Kartesisches Produkt und Joins}
+\begin{enumerate}
+            \item Nenne alle Flüsse, die durch Deutschland fließen!
+            \item Nenne alle Gewässer, die in die Nordsee übergehen!
+            \item Nenne alle Inseln zusammen mit ihren Ländern auf, in denen sie liegen!
+            \item Nenne die Hauptstädte aller Länder, die Mitglied der UNO (Kürzel) sind!
+            \item Nenne alle Länder, die volles Mitglied der Europäischen Union sind!
+            \item Nenne alle Länder, die mit Deutschland benachbart sind!
+        \end{enumerate}    
+\end{paufgabe}
+
+\begin{paufgabe}{Relationenalgebra}
+    Wir möchten nun folgende Relationen mit einem Ausdruck in Relationenalgebra erhalten.
+
+    \begin{enumerate}
+        \item Eine Relation, in der jedem Berg sein Name, das Land, in dem er steht und dessen Hauptstadt aufgelistet sind.
+        \begin{center}
+            {\tt (B\_Name, L\_Name, Hauptstadt)}
+        \end{center}
+
+        \item Eine Relation, in der alle Namen von Ländern mit mehr als $100\,000\,000$ Einwohnern als auch alle Namen von Bergen mit einer Höhe von $8\,000$. Diese Spalte soll dann 
+        \begin{center}
+            {\tt (Name)}
+        \end{center}
+
+        \item Eine Relation, in der der Name jeder Insel zusammen mit dem Land und dem Kontinent, auf dem sie liegt, aufgelistet werden.
+        \begin{center}
+            {\tt (L\_Name, K\_Name, O\_Name, Abkuerzung)}
+        \end{center}
+    \end{enumerate}
+\end{paufgabe}
+
+\begin{paufgabe}{Andere Verbundoperatoren}
+    Verwende einen Semijoin, um die folgenden Aufgaben zu lösen:
+        \begin{enumerate}
+            \item Nenne alle Länder, die in einer Organisation sind
+        \end{enumerate}
+\end{paufgabe}
+
+\end{document}

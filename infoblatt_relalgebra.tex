@@ -1,0 +1,338 @@
+\documentclass[12pt,a4paper,notitlepage,leqno]{article}
+
+\input{./einstellungen}
+
+\usepackage{sectsty}
+\sectionfont{\bf\normalsize}
+\renewcommand{\thesection}{}
+
+\begin{document}
+
+
+
+\vspace{0.2cm}
+\begin{minipage}[c]{0.5\textwidth}
+\begin{center}
+\textsc{Fachbereich Mathematik, Informatik, Naturwissenschaften und Technik}
+\end{center}
+\end{minipage}
+\begin{minipage}[c]{0.5\textwidth}
+\begin{center}
+\textbf{Datenbanksysteme}\\
+Schuljahr 2022/23
+\end{center}
+\end{minipage}
+
+\begin{center}
+\textbf{\underline{Übersicht Relationenalgebra}}
+
+\vspace{0.2cm}
+\end{center}
+
+\section*{Projektion}
+
+Die Projektion ($\pi$) wird verwendet, um gewisse Spalten aus einer Relation auszuschließen bzw. nur gewisse Spalten einzuschließen.
+
+\begin{center}
+    \begin{tabular}{c|ccc}
+        $R$ & $A$ & $B$ & $C$ \\\hline
+         & $1$ & $2$ & $3$ \\
+         & $4$ & $5$ & $6$ \\
+         & $7$ & $8$ & $9$ \\
+         & $10$ & $11$ & $12$
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|c}
+        $\pi_B(R)$ & $B$ \\\hline
+         & $2$\\
+         & $5$\\
+         & $8$\\
+         & $11$\\
+    \end{tabular}
+\end{center}
+
+\section*{Selektion}
+
+Die Selektion ($\sigma$) wird verwendet, um Zeilen mit gewissen Eigenschaften/Bedingungen auszuwählen. Es lassen sich auch mehrere Bedingungen durch logische Operatoren ($\land, \lor, \neg$)\footnote{In dieser Reihenfolge: und, oder, nicht} kombinieren
+
+\begin{center}
+    \begin{tabular}{c|ccc}
+        $R$ & $A$ & $B$ & $C$ \\\hline
+         & $1$ & $2$ & $3$ \\
+         & $4$ & $5$ & $6$ \\
+         & $7$ & $8$ & $9$ \\
+         & $10$ & $11$ & $12$
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|ccc}
+        $\sigma_{A>5}(R)$ & $A$ & $B$ & $C$ \\\hline
+         & $7$ & $8$ & $9$ \\
+         & $10$ & $11$ & $12$
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|ccc}
+        $\sigma_{A>5\;\lor\;C\leq 4}(R)$ & $A$ & $B$ & $C$ \\\hline
+         & $1$ & $2$ & $3$ \\
+         & $7$ & $8$ & $9$ \\
+         & $10$ & $11$ & $12$
+    \end{tabular}
+\end{center}
+
+\section*{Vereinigung}
+
+Die Vereinigung ($R\cup S$) vermengt zwei Relationen dann, wenn ihre Datentypen (Text, Zahl, Datum,\dots) gleich sind.
+
+\begin{center}
+    \begin{tabular}{c|cc}
+        $R$ & $A$ & $B$\\\hline
+         & $x$ & $y$\\
+         & $a$ & $f$\\
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|cc}
+        $S$ & $C$ & $D$ \\\hline
+         & $a$ & $e$\\
+         & $b$ & $f$
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|cc}
+        $R\cup S$ & $A$ & $B$ \\\hline
+         & $x$ & $y$\\
+         & $a$ & $f$\\
+         & $a$ & $e$\\
+         & $b$ & $f$
+    \end{tabular}
+\end{center}
+
+\section*{Differenz}
+
+Die Differenz ($R\setminus S$) gibt die Zeilen von $R$ aus, die nicht in $S$ enthalten sind.
+
+\begin{center}
+    \begin{tabular}{c|cc}
+        $R$ & $A$ & $B$\\\hline
+         & $x$ & $y$\\
+         & $a$ & $e$\\
+         & $b$ & $z$\\
+         & $b$ & $f$
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|cc}
+        $S$ & $C$ & $D$ \\\hline
+         & $a$ & $e$\\
+         & $b$ & $f$\\
+         & $x$ & $z$
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|cc}
+        $R\setminus S$ & $A$ & $B$ \\\hline
+         & $x$ & $y$\\
+         & $b$ & $z$
+    \end{tabular}
+\end{center}
+
+\section*{Kartesisches Produkt}
+
+Das Kartesische Produkt ($R\times S$) ist eine Kombination von zwei Relationen. Dabei wird jede Zeile aus $R$ mit jeder Zeile von $S$ verbunden.
+
+\begin{center}
+    \begin{tabular}{c|cc}
+        $R$ & $A$ & $B$\\\hline
+         & $1$ & $2$\\
+         & $4$ & $5$\\
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|cc}
+        $S$ & $C$ & $D$ \\\hline
+         & $a$ & $e$\\
+         & $b$ & $f$
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|cccc}
+        $R\times S$ & $A$ & $B$ & $C$ & $D$ \\\hline
+         & $1$ & $2$& $a$ & $e$\\
+         & $1$ & $2$& $b$ & $f$\\
+         & $4$ & $5$& $a$ & $e$\\
+         & $4$ & $5$& $b$ & $f$\\
+    \end{tabular}
+\end{center}
+
+\section*{Verbund}
+
+Ein Verbund (Join) wird verwendet, um eine Relation aus zwei verschiedenen Relationen zu erhalten. Dabei können wir zwei Spalten vergleichen, um die beiden Relationen miteinander zu verbinden. 
+
+\begin{center}
+    \begin{tabular}{c|ccc}
+        $R$ & $A$ & $B$ & $C$ \\\hline
+         & $1$ & $2$ & $3$ \\
+         & $4$ & $5$ & $6$ \\
+         & $7$ & $8$ & $9$ \\
+         & $10$ & $11$ & $12$
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|ccc}
+        $S$ & $X$ & $Y$ & $Z$ \\\hline
+         & $3$ & $e$ & $i$ \\
+         & $3$ & $f$ & $j$ \\
+         & $6$ & $g$ & $k$ \\
+         & $7$ & $h$ & $l$
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|ccccc}
+        $R \bowtie_{R.C=S.X} S$ & $A$ & $B$ & $C$ & $Y$ & $Z$ \\\hline
+         & $1$ & $2$ & $3$ & $e$ & $i$ \\
+         & $1$ & $2$ & $3$ & $f$ & $j$ \\
+         & $4$ & $5$ & $6$ & $g$ & $k$\\
+    \end{tabular}
+\end{center}
+
+\section*{Linker äußerer Verbund}
+
+Ein linker äußerer Verbund ($R \bowtie_l S$) wird verwendet, um eine Relation aus zwei verschiedenen Relationen zu erhalten. Dabei können wir zwei Spalten vergleichen, um die beiden Relationen miteinander zu verbinden. Die Besonderheit ist, dass hier Zeilen aus $R$, die keine passende Zeile in $S$ haben, nicht entfernt werden. Stattdessen wird dort ein Nullwert eingetragen. 
+
+\begin{center}
+    \begin{tabular}{c|ccc}
+        $R$ & $A$ & $B$ & $C$ \\\hline
+         & $1$ & $2$ & $3$ \\
+         & $4$ & $5$ & $6$ \\
+         & $7$ & $8$ & $9$ \\
+         & $10$ & $11$ & $12$
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|ccc}
+        $S$ & $C$ & $Y$ & $Z$ \\\hline
+         & $3$ & $e$ & $i$ \\
+         & $3$ & $f$ & $j$ \\
+         & $6$ & $g$ & $k$ \\
+         & $7$ & $h$ & $l$
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|ccccc}
+        $R \bowtie_l S$ & $A$ & $B$ & $C$ & $Y$ & $Z$ \\\hline
+         & $1$ & $2$ & $3$ & $e$ & $i$ \\
+         & $1$ & $2$ & $3$ & $f$ & $j$ \\
+         & $4$ & $5$ & $6$ & $g$ & $k$\\
+         & $7$ & $8$ & $9$ & - & - \\
+         & $10$ & $11$ & $12$ & - & -
+    \end{tabular}
+\end{center}
+
+\section*{Rechter äußerer Verbund}
+
+Ein linker äußerer Verbund ($R \bowtie_r S$) wird verwendet, um eine Relation aus zwei verschiedenen Relationen zu erhalten. Dabei können wir zwei Spalten vergleichen, um die beiden Relationen miteinander zu verbinden. Die Besonderheit ist, dass hier Zeilen aus $S$, die keine passende Zeile in $R$ haben, nicht entfernt werden. Stattdessen wird dort ein Nullwert eingetragen. 
+
+\begin{center}
+    \begin{tabular}{c|ccc}
+        $R$ & $A$ & $B$ & $C$ \\\hline
+         & $1$ & $2$ & $3$ \\
+         & $4$ & $5$ & $6$ \\
+         & $7$ & $8$ & $9$ \\
+         & $10$ & $11$ & $12$
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|ccc}
+        $S$ & $C$ & $Y$ & $Z$ \\\hline
+         & $3$ & $e$ & $i$ \\
+         & $3$ & $f$ & $j$ \\
+         & $6$ & $g$ & $k$ \\
+         & $7$ & $h$ & $l$
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|ccccc}
+        $R \bowtie_r S$ & $A$ & $B$ & $C$ & $Y$ & $Z$ \\\hline
+         & $1$ & $2$ & $3$ & $e$ & $i$ \\
+         & $1$ & $2$ & $3$ & $f$ & $j$ \\
+         & $4$ & $5$ & $6$ & $g$ & $k$\\
+         & - & - &$7$ & $h$ & $l$
+    \end{tabular}
+\end{center}
+
+\section*{Äußerer Verbund}
+
+Ein äußerer Verbund ($R \bowtie_{rl} S$) wird verwendet, um eine Relation aus zwei verschiedenen Relationen zu erhalten. Dabei können wir zwei Spalten vergleichen, um die beiden Relationen miteinander zu verbinden. Die Besonderheit ist, dass hier Zeilen aus $S$, die keine passende Zeile in $R$ haben, nicht entfernt werden. Stattdessen wird dort ein Nullwert eingetragen. Gleiches gilt für Zeilen aus $R$, die keine passende Zeile in $S$ haben. Die Tupel beider Relationen bleiben in jedem Fall erhalten.
+
+\begin{center}
+    \begin{tabular}{c|ccc}
+        $R$ & $A$ & $B$ & $C$ \\\hline
+         & $1$ & $2$ & $3$ \\
+         & $4$ & $5$ & $6$ \\
+         & $7$ & $8$ & $9$ \\
+         & $10$ & $11$ & $12$
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|ccc}
+        $S$ & $C$ & $Y$ & $Z$ \\\hline
+         & $3$ & $e$ & $i$ \\
+         & $3$ & $f$ & $j$ \\
+         & $6$ & $g$ & $k$ \\
+         & $7$ & $h$ & $l$
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|ccccc}
+        $R \bowtie_{rl} S$ & $A$ & $B$ & $C$ & $Y$ & $Z$ \\\hline
+         & $1$ & $2$ & $3$ & $e$ & $i$ \\
+         & $1$ & $2$ & $3$ & $f$ & $j$ \\
+         & $4$ & $5$ & $6$ & $g$ & $k$\\
+         & $7$ & $8$ & $9$ & - & - \\
+         & $10$ & $11$ & $12$ & - & - \\
+         & - & - &$7$ & $h$ & $l$
+    \end{tabular}
+\end{center}
+
+\section*{Semiverbund}
+
+Das Ergebnis enthält alle Tupel aus $R$ in unveränderter Form, die einen Verbundpartner in $S$ haben.
+
+\begin{center}
+    \begin{tabular}{c|ccc}
+        $R$ & $A$ & $B$ & $C$ \\\hline
+         & $1$ & $2$ & $3$ \\
+         & $4$ & $5$ & $6$ \\
+         & $7$ & $8$ & $9$ \\
+         & $10$ & $11$ & $12$
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|ccc}
+        $S$ & $C$ & $Y$ & $Z$ \\\hline
+         & $3$ & $e$ & $i$ \\
+         & $3$ & $f$ & $j$ \\
+         & $6$ & $g$ & $k$ \\
+         & $7$ & $h$ & $l$
+    \end{tabular}
+
+    \vspace*{0.5cm}
+    
+    \begin{tabular}{c|ccccc}
+        $R \ltimes S$  & $A$ & $B$ & $C$ \\\hline
+         & $1$ & $2$ & $3$ \\
+         & $4$ & $5$ & $6$
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|ccc}
+        $R \rtimes S$ & $C$ & $Y$ & $Z$ \\\hline
+         & $3$ & $e$ & $i$ \\
+         & $3$ & $f$ & $j$ \\
+         & $6$ & $g$ & $k$
+    \end{tabular}
+\end{center}
+
+\end{document}
+
+\begin{center}
+    \begin{tabular}{c|ccc}
+        $R$ & $A$ & $B$ & $C$ \\\hline
+         & $1$ & $2$ & $3$ \\
+         & $4$ & $5$ & $6$ \\
+         & $7$ & $8$ & $9$ \\
+         & $10$ & $11$ & $12$
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|ccc}
+        $S$ & $C$ & $D$ & $E$ \\\hline
+         & $a$ & $e$ & $i$ \\
+         & $b$ & $f$ & $j$ \\
+         & $c$ & $g$ & $k$ \\
+         & $d$ & $h$ & $l$
+    \end{tabular}
+    \hspace{1cm}
+\end{center}

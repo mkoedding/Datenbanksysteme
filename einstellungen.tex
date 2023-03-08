@@ -1,0 +1,159 @@
+\author{Vorbereitungsseminar}
+\newcommand{\thema}{Datenbankabfragen}
+
+
+
+
+
+
+
+
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{blindtext}
+\usepackage{hyperref}
+\usepackage{commath}
+\usepackage{minted}
+\DeclareMathSymbol{*}{\mathbin}{symbols}{"01}
+\usepackage{etoolbox}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm]{geometry}
+\newcommand{\java}[1]{\mintinline[breaklines]{java}{#1}}
+\renewcommand{\labelenumi}{\texttt{\alph{enumi}})}
+\newcommand{\wenn}{&\text{, wenn }}
+\newcommand{\sonst}{&\text{, sonst }}
+\newcounter{Woche}
+\setcounter{Woche}{0}
+\newcounter{Aufgabe}
+\setcounter{Aufgabe}{0}
+\newcounter{KAufgabe}
+\setcounter{KAufgabe}{0}
+
+
+
+\newenvironment{aufgabe}[1]{
+\addtocounter{Aufgabe}{1} \medskip%
+\underline{\textbf{Aufgabe \theAufgabe}\;\;[#1]}
+
+\vspace{0.3cm}}{\bigskip}
+
+\newenvironment{klaufgabe}[2]{
+\addtocounter{KAufgabe}{1} \medskip%
+\underline{\textbf{Aufgabe \theKAufgabe}\;\;[#1]}\hfill\textit{(#2)}
+
+\vspace{0.3cm}}{\newpage}
+
+\newenvironment{paufgabe}[1]{
+\addtocounter{Aufgabe}{1} \medskip%
+\underline{\textbf{Aufgabe P.\theWoche.\theAufgabe}\;\;[#1]}
+
+\vspace{0.3cm}}{\newpage}
+
+\newcommand{\grundlagen}[2]{\textbf{Grundlagen} der Übung sind die Kapitel \textit{#1} bis \textit{#2}.}
+\newcommand{\grundlage}[1]{\textbf{Grundlage} der Übung ist \textit{#1}.}
+\newcommand{\hinweise}[1]{\textbf{Hinweise: } #1.}
+
+\setlength{\parindent}{0em}
+
+%\newcommand{\header}[3]{\begin{center}
+%\setcounter{page}{1}
+%%\noindent\rule[1ex]{\textwidth}{2pt}
+%\begin{Large}
+%\textbf{#1. #2 zum Thema\\#3}
+%\end{Large}
+%\end{center}
+%Hr. Marvin Ködding \hfill \sj
+%
+%\vspace{0.05cm}
+%\noindent\rule[1ex]{\textwidth}{2pt}
+%\vspace{0.4cm}}
+
+\newcommand{\pheader}[1]{
+\setcounter{Aufgabe}{0}
+\setcounter{Woche}{#1}
+\vspace{0.2cm}
+\begin{minipage}[c]{0.5\textwidth}
+\begin{center}
+\textsc{Fachbereich Mathematik, Informatik, Naturwissenschaften und Technik}
+\end{center}
+\end{minipage}
+\begin{minipage}[c]{0.5\textwidth}
+\begin{center}
+\textbf{Datenbanksysteme}\\
+Schuljahr 2022/23
+\end{center}
+\end{minipage}
+
+\begin{center}
+\textbf{\underline{Plenumsblatt \theWoche}}
+
+\vspace{0.2cm}
+\end{center}
+}
+
+\newcommand{\kheader}[1]{
+\setcounter{KAufgabe}{0}
+
+\vspace{0.2cm}
+\begin{minipage}[c]{0.5\textwidth}
+\begin{center}
+\textsc{Fachbereich Mathematik, Informatik, Naturwissenschaften und Technik}
+\end{center}
+\end{minipage}
+\begin{minipage}[c]{0.5\textwidth}
+\begin{center}
+\textbf{\thema}\\
+Marvin Ködding
+\end{center}
+\end{minipage}
+
+\begin{center}
+\textbf{\underline{Klausur #1}}
+
+\vspace{0.2cm}
+\end{center}
+\underline{Hinweise:}
+\begin{itemize}
+\item Schalten Sie, falls noch nicht geschehen, umgehend Ihr Mobiltelefon aus!
+\item Schalten Sie außerdem alle nicht medizinisch notwendigen Lärmquellen aus.
+\item Entfernen Sie jetzt alle unerlaubten Gegenstände vom Tisch. Erlaubt sind nur ein Stift (kein Rot-, Grün- oder Bleistift) und Getränke
+\item Schreiben Sie auf jedes Blatt Ihren Namen. Blätter ohne Namen werden nicht korrigiert und ergeben 0 Punkte!
+\item Verwenden Sie kein eigenes Papier für Notizen. Am Ende der Klausur befinden sich 2 Extrablätter. Sie können auf Anfrage weitere Blätter erhalten. Machen Sie gut kenntlich, wenn
+Sie Zusatzblätter für Lösungen verwenden und tragen Sie dort ebenfalls Ihren Namen ein.
+\item Die Bearbeitungszeit beträgt \textbf{90} Minuten
+\item Mehrere, widersprüchliche Lösungen zu einer Aufgabe werden mit 0 Punkten bewertet.
+\end{itemize}
+}
+
+\newcommand{\header}{
+\setcounter{Aufgabe}{0}
+\addtocounter{Woche}{1}
+\vspace{0.2cm}
+\begin{minipage}[c]{0.5\textwidth}
+\begin{center}
+\textsc{Fachbereich Mathematik, Informatik, Naturwissenschaften und Technik}
+\end{center}
+\end{minipage}
+\begin{minipage}[c]{0.5\textwidth}
+\begin{center}
+\textbf{\thema}\\
+Marvin Ködding
+\end{center}
+\end{minipage}
+
+\begin{center}
+\textbf{\underline{Übungsblatt \theWoche}}
+
+\vspace{0.2cm}
+\end{center}
+\underline{Hinweise:}
+\begin{itemize}
+\item Die Aufgaben sind dem Skript von Michael Kipp (michaelkipp.de) entnommen.
+\end{itemize}
+}

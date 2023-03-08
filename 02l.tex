@@ -1,0 +1,94 @@
+\documentclass[12pt,a4paper,notitlepage,leqno]{article}
+
+\input{./einstellungen}
+
+\begin{document}
+
+\vspace{0.2cm}
+\begin{minipage}[c]{0.5\textwidth}
+\begin{center}
+\textsc{Fachbereich Mathematik, Informatik, Naturwissenschaften und Technik}
+\end{center}
+\end{minipage}
+\begin{minipage}[c]{0.5\textwidth}
+\begin{center}
+\textbf{Datenbanksysteme}\\
+Schuljahr 2022/23
+\end{center}
+\end{minipage}
+
+\begin{center}
+\textbf{\underline{Lösung zu Übungsblatt 2}}
+
+\vspace{0.2cm}
+\end{center}
+
+Gegeben seien die Relationen\footnote{Diese sind der Terra-Datenbank entnommen. Die Terra-Datenbank hat mehr Relationen und teilweise noch mehr Attribute, aber man kann die Aufgaben auch direkt an der Terra-Datenbank (s. Plenumsblatt 2) lösen.}
+
+\begin{center}
+    \texttt{Stadt(\underline{St\_Name}, L\_ID, Einwohner, Breite, Länge)}\\
+    \texttt{Land(\underline{L\_ID}, L\_Name, Einwohner, Fläche, Hauptstadt)}\\
+    \texttt{Kontinent(\underline{K\_Name}, Fläche)}\\
+    \texttt{Umfasst(\underline{K\_Name}, \underline{L\_ID})}
+\end{center}
+
+\begin{aufgabe}{Einfache Relationenalgebra I}
+
+Gib einen Ausdruck in Relationenalgebra an, um die folgenden Informationen anzuzeigen:
+
+\begin{enumerate}
+    \item Die Länderkürzel aller Länder
+    \[
+        \pi_{\mathrm{L\_ID}}\bigl(\textsc{Land}\bigr)
+    \]
+    \item Alle Städtenamen mit ihren Einwohnerzahlen
+    \[
+        \pi_{\mathrm{St\_Name, Einwohner}}\bigl(\textsc{Stadt}\bigr)
+    \]
+    \item Alle Städte mit mehr als $100\,000$ Einwohnern
+    \[
+        \sigma_{\mathrm{Einwohner} > 100\,000}\bigl(\textsc{Stadt}\bigr)
+    \]
+    \item Den Namen des Landes, dessen Hauptstadt Madrid ist.
+    \[
+        \pi_{\mathrm{L\_Name}}\Bigl(\sigma_{\mathrm{Hauptstadt='Madrid'}}\bigl(\textsc{Land}\bigr)\Bigr)
+    \]
+    \item Die L\_ID der Länder, deren Hauptstadt Mailand oder Madrid ist.
+    \[
+        \pi_{\mathrm{L\_Name}}\Bigl(\sigma_{\mathrm{Hauptstadt='Madrid'}\;\lor\; \mathrm{Hauptstadt='Mailand'}}\bigl(\textsc{Land}\bigr)\Bigr)
+    \]
+    
+\end{enumerate}
+
+\end{aufgabe}
+
+\begin{aufgabe}{Einfache Relationenalgebra II}
+Gib verbal an, was dieser Ausdruck bestimmt:
+
+\[\pi_{\textrm{L\_Name}}\biggl(\sigma_{\textrm{Hauptstadt='Paris'}}\bigl(\textsc{Land}\bigr)\biggr)\]
+
+Der Name des Landes, dessen Hauptstadt Paris ist
+
+\end{aufgabe}
+
+\begin{aufgabe}{Kartesisches Produkt und Joins I}
+Gib einen Ausdruck in Relationenalgebra an, um die folgenden Informationen anzuzeigen:
+\begin{enumerate}
+    \item Alle Länder, die auf dem Kontinent Asien liegen.
+    \[
+        \pi_{\mathrm{Land.^{\ast}}}\Bigl(\sigma_{\mathrm{K\_Name='Asien'}}\bigl(\textsc{Umfasst} \bowtie \textsc{Land}\bigr)\Bigr)
+    \]
+    \item Alle Städte, die im Land mit der Hauptstadt 'Rom' liegen.
+    \[
+        \pi_{\mathrm{Stadt.^{\ast}}}\Bigl(\sigma_{\mathrm{Hauptstadt='Rom'}}\bigl(\textsc{Stadt} \bowtie \textsc{Land}\bigr)\Bigr)
+    \]
+\end{enumerate}    
+\end{aufgabe}
+
+\begin{aufgabe}{Kartesisches Produkt und Joins II}
+Gib verbal an, was dieser Ausdruck bestimmt:
+\[\pi_{\textrm{Kontinent.Fläche}}\biggl(\sigma_{\textrm{L\_ID='D'}}\bigl(\textsc{Umfasst}\bowtie\textsc{Kontinent}\bigr)\biggr)\]
+Die Fläche des Kontinenten, auf dem Deutschland liegt.
+\end{aufgabe}
+
+\end{document}
